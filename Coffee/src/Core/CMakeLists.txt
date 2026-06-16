@@ -26,4 +26,6 @@ target_sources(
           ${ENGINE_INCLUDE_DIR}/Coffee/Core/Window.h
   PRIVATE Application.cpp)
 
+target_link_libraries(Core PRIVATE glfw)
+
 install(TARGETS Core FILE_SET HEADERS FILE_SET myPrivateHeaders)
