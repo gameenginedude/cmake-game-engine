@@ -1,6 +1,3 @@
-// #include "Coffee/Core/Application.h"
-// #include "Coffee/Graphics/Graphics.h"
-
 #include "Coffee/Coffee.h"
 
 int main() {
