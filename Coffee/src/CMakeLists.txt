@@ -1,6 +1,9 @@
+include(${CMAKE_SOURCE_DIR}/cmake/utils.cmake)
+
 add_subdirectory(Core)
 add_subdirectory(Graphics)
 add_subdirectory(Renderer)
+add_subdirectory(Loaders)
 
 add_library(Coffee INTERFACE)
 
@@ -12,22 +15,16 @@ target_sources(
 
 target_link_libraries(Coffee INTERFACE Core Graphics)
 
-target_compile_definitions(
-  Core
-  PUBLIC $<$<AND:$<CONFIG:Debug>,$<BOOL:${COFFEE_CORE_DEBUG}>>:COFFEE_DEBUG>)
-target_compile_definitions(
-  Graphics
-  PUBLIC $<$<AND:$<CONFIG:Debug>,$<BOOL:${COFFEE_GRAPHICS_DEBUG}>>:COFFEE_DEBUG>
-)
-target_compile_definitions(
-  Renderer
-  PUBLIC $<$<AND:$<CONFIG:Debug>,$<BOOL:${COFFEE_RENDERER_DEBUG}>>:COFFEE_DEBUG>
-)
+coffee_target_debug_compile_defs(Core)
+coffee_target_debug_compile_defs(Graphics)
+coffee_target_debug_compile_defs(Renderer)
+coffee_target_debug_compile_defs(Loaders)
+coffee_target_debug_compile_defs(Memory)
 
 # --- INSTALL LIBS ---
 
 install(
-  TARGETS Coffee Core Graphics Renderer
+  TARGETS Coffee Core Graphics Renderer Loaders
   EXPORT CoffeeTargets
   FILE_SET HEADERS)
 

@@ -7,7 +7,7 @@ namespace Coffee {
 #define COFFEE_PRINT(msg)                                                      \
   do {                                                                         \
     std::cout << "Log:: " << msg << '\n';                                      \
-  } while (0);
+  } while (0)
 #else
 #define COFFEE_PRINT(msg)
 #endif

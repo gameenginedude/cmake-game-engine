@@ -17,10 +17,11 @@ Renderer *Renderer::s_instance = new Renderer();
 
 vk::Instance vkInstance;
 
-Renderer::Renderer(){COFFEE_PRINT("Renderer Created")}
-
+Renderer::Renderer() { COFFEE_PRINT("Renderer Created"); }
 Renderer::~Renderer() {
-  COFFEE_PRINT("Renderer Destroyed")
+  if (vkInstance)
+    vkInstance.destroy();
+  COFFEE_PRINT("Renderer Destroyed");
 }
 
 void Renderer::Init() {
@@ -36,7 +37,7 @@ void Renderer::Init() {
   vkInstance = vk::createInstance(createInfo);
 
   if (vkInstance)
-    std::cout << "VULKAN INITED!!" << '\n';
+    COFFEE_PRINT("Vulkan inited!");
 }
 
 Renderer &Renderer::Get() { return *s_instance; }

@@ -2,9 +2,14 @@ add_library(Core STATIC)
 
 target_sources(
   Core
-  PUBLIC FILE_SET HEADERS BASE_DIRS ${ENGINE_INCLUDE_DIR}
+  PUBLIC FILE_SET
+         HEADERS
+         BASE_DIRS
+         ${ENGINE_INCLUDE_DIR}
          #
-         FILES ${ENGINE_INCLUDE_DIR}/Coffee/Core/Application.h
+         FILES
+         ${ENGINE_INCLUDE_DIR}/Coffee/Core/Application.h
+         ${ENGINE_INCLUDE_DIR}/Coffee/Core/CoreDefs.h
   PRIVATE FILE_SET
           myPrivateHeaders
           TYPE

@@ -6,11 +6,8 @@ namespace Coffee {
 namespace Core {
 Window *Window::s_instance = new Window();
 
-Window::Window(){COFFEE_PRINT("Window Created")}
-
-Window::~Window() {
-  COFFEE_PRINT("Window Destroyed")
-}
+Window::Window() { COFFEE_PRINT("Window Created"); }
+Window::~Window() { COFFEE_PRINT("Window Destroyed"); }
 
 void Window::Create() {
   if (!glfwInit())
