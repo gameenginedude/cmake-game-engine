@@ -4,6 +4,7 @@ add_subdirectory(Core)
 add_subdirectory(Graphics)
 add_subdirectory(Renderer)
 add_subdirectory(Loaders)
+add_subdirectory(Memory)
 
 add_library(Coffee INTERFACE)
 
@@ -15,11 +16,11 @@ target_sources(
 
 target_link_libraries(Coffee INTERFACE Core Graphics)
 
-coffee_target_debug_compile_defs(Core)
-coffee_target_debug_compile_defs(Graphics)
-coffee_target_debug_compile_defs(Renderer)
-coffee_target_debug_compile_defs(Loaders)
-coffee_target_debug_compile_defs(Memory)
+coffee_target_debug_compile_defs(Core PUBLIC)
+coffee_target_debug_compile_defs(Graphics PUBLIC)
+coffee_target_debug_compile_defs(Renderer PUBLIC)
+coffee_target_debug_compile_defs(Loaders INTERFACE)
+coffee_target_debug_compile_defs(Memory PUBLIC)
 
 # --- INSTALL LIBS ---
 
@@ -33,6 +34,9 @@ install(
   EXPORT CoffeeTargets
   NAMESPACE Coffee::
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Coffee)
+install(
+    DIRECTORY ${ENGINE_ASSETS_DIR}
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/Coffee)
 
 include(CMakePackageConfigHelpers)
 

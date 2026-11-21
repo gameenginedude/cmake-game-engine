@@ -1,5 +1,4 @@
 #include "Coffee/Memory/Memory.h"
-#include "Coffee/Logs.h"
 
 namespace Coffee {
 namespace Memory {
@@ -15,5 +14,4 @@ void Mine::Destroy() {
 }
 
 } // namespace Memory
-
 } // namespace Coffee

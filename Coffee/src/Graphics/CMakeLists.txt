@@ -6,6 +6,7 @@ target_sources(
          HEADERS
          BASE_DIRS
          ${ENGINE_INCLUDE_DIR}
+         ${ENGINE_ASSETS_DIR}
          #
          FILES
          ${ENGINE_INCLUDE_DIR}/Coffee/Graphics/Graphics.h

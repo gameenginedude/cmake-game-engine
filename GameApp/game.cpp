@@ -1,6 +1,5 @@
 
 #include "Coffee/Coffee.h"
-#include "Coffee/Core/Application.h"
 
 #include <string_view>
 
@@ -20,16 +19,15 @@ void OnUpdate(const Core::FrameData &frameData) {
 }
 
 int main() {
-
   Core::Application &engine = Core::Application::Get();
   Loaders::GltfLoader loader{};
 
-  std::string_view filepath = "some/Path/To/Your/3DModel.gltf";
+  std::string_view filePath = "some/path/to/your/3dModel.gltf";
   Loaders::CppFriendlyFormat fileData;
 
   Gfx::Scene scene{};
 
-  loader.LoadFrom3DFile(filepath, fileData);
+  loader.LoadFrom3DFile(filePath, fileData);
   loader.ExtractSceneInfoFrom3DFile(fileData, scene);
 
   Gfx::GameObject *playerCharacter =
@@ -45,8 +43,8 @@ int main() {
   // engine.Start(OnUpdate);
   engine.Start(movePlayer);
 
-  ctx.graphics->RegisterScene(scene);
-  ctx.graphics->PaintFrame();
+  // ctx.graphics->RegisterScene(scene);
+  // ctx.graphics->PaintFrame();
 
   Gfx::Graphics::Destroy();
 

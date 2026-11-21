@@ -1,4 +1,5 @@
 #include "Coffee/Graphics/Graphics.h"
+#include "Coffee/Loaders/ShaderLoader.h"
 #include "Coffee/Logs.h"
 #include "Coffee/Renderer/Renderer.h"
 
@@ -24,8 +25,10 @@ void Graphics::InitializeGraphics(OSWindow *window,
   // initializes required render passes, pipelines, shaders, etc
 
   // below dumb example initializes a basic material color pass
-  ShaderModule basicMaterialShading = {.vertexShader = VertexShader,
-                                       .fragmentShader = FragmentShader};
+
+  //   Loaders::LoadShadersAndCompile(VertexShader, std::byte *shaderByteCode)
+  // ShaderModule basicMaterialShading = {.vertexShader = VertexShader,
+  //                                      .fragmentShader = FragmentShader};
 
   PipelineInfo basicMaterialPipeline = {
       // like some info about the material/surface properties specific to
@@ -37,19 +40,20 @@ void Graphics::InitializeGraphics(OSWindow *window,
       // terms of painting analogy)
   };
 
-  m_renderer.CreatePipeline(basicMaterialShading, basicMaterialPipeline);
-  m_renderer.CreateRenderPass(basicMaterialPass);
+  // m_renderer.CreatePipeline(basicMaterialShading, basicMaterialPipeline);
+  // m_renderer.CreateRenderPass(basicMaterialPass);
 
   std::cout << "basic material render pass created, pipelines ready!" << '\n';
   // similarly write your own pipelines / renderpasses as per your need.
 }
 
 void Graphics::PaintFrame() {
-  m_renderer.IssueDrawCommandToGPU(m_memory.GetGPUDataPtr());
-  std::cout << "All the scene data saved in the GPU memory is painted on screen"
-               "according to the Renderpasses and Pipelines defined by the "
-               "developer"
-            << '\n';
+  // m_renderer.IssueDrawCommandToGPU(m_memory.GetGPUDataPtr());
+  // std::cout << "All the scene data saved in the GPU memory is painted on
+  // screen"
+  //              "according to the Renderpasses and Pipelines defined by the "
+  //              "developer"
+  //           << '\n';
 };
 
 void Graphics::RegisterScene(const Scene &scene) {
@@ -58,9 +62,9 @@ void Graphics::RegisterScene(const Scene &scene) {
   //
   // in the below dumb examples, assume some data handle instead of nullptr,
   // pointing to data in the Scene
-  m_memory.CopyMeshRelatedDataToGPU(nullptr);
-  m_memory.CopyTransformsRelatedDataToGPU(nullptr);
-  m_memory.CopyMaterialsDataToGPU(nullptr);
+  // m_memory.CopyMeshRelatedDataToGPU(nullptr);
+  // m_memory.CopyTransformsRelatedDataToGPU(nullptr);
+  // m_memory.CopyMaterialsDataToGPU(nullptr);
 }
 
 Graphics &Graphics::Get() { return *s_instance; }
